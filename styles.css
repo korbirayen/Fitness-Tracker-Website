@@ -1,8 +1,22 @@
+:root {
+    --primary-bg: #000000;
+    --primary-text: #ffffff;
+    --secondary-text: #90ee90; /* Light Green */
+    --accent-color: #3cb371; /* Medium Sea Green */
+    --accent-color-darker: #2e8b57; /* Sea Green (darker shade for hover) */
+    --glass-bg: rgba(60, 179, 113, 0.2); /* More subtle green glass */
+    --glass-bg-hover: rgba(60, 179, 113, 0.4); /* Slightly darker green glass for hover */
+    --card-bg: rgba(44, 44, 44, 0.7); /* Dark grey semi-transparent for cards */
+    --border-color: rgba(60, 179, 113, 0.3); /* Subtle green border */
+    --shadow-color: rgba(60, 179, 113, 0.2); /* Greenish shadow */
+    --progress-gradient: linear-gradient(90deg, var(--accent-color), #66bb6a); /* Green gradient */
+}
+
 body {
     margin: 0;
     font-family: 'Segoe UI', Arial, sans-serif;
-    background: #000000;
-    color: #ffffff;
+    background: var(--primary-bg);
+    color: var(--primary-text);
     line-height: 1.6;
 }
 
@@ -14,13 +28,14 @@ body {
 
 /* Navbar Styles */
 nav {
-    background: rgba(150, 0, 0, 0.3);
+    background: var(--glass-bg);
     backdrop-filter: blur(10px);
     position: sticky;
     top: 0;
     z-index: 100;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 4px 10px var(--shadow-color);
     padding: 10px 0;
+    border-bottom: 1px solid var(--border-color);
 }
 
 nav .container {
@@ -44,10 +59,11 @@ nav .logo {
 nav .logo img {
     width: 24px;
     margin-right: 8px;
+    filter: drop-shadow(0 1px 2px rgba(0,0,0,0.3)); /* Adjusted shadow */
 }
 
 nav .logo span {
-    color: #ff9999;
+    color: var(--secondary-text);
 }
 
 nav ul {
@@ -59,7 +75,7 @@ nav ul {
 }
 
 nav ul li a {
-    color: #ff9999;
+    color: var(--secondary-text);
     text-decoration: none;
     font-weight: bold;
     font-size: 16px;
@@ -67,7 +83,7 @@ nav ul li a {
 }
 
 nav ul li a:hover {
-    color: #ff3333;
+    color: var(--accent-color);
 }
 
 nav .user {
@@ -86,13 +102,15 @@ nav .user img {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 20px 0;
+    margin: 30px 0 20px; /* Added top margin */
+    padding-bottom: 10px; /* Added padding */
+    border-bottom: 1px solid var(--border-color); /* Subtle separator */
 }
 
 .dashboard-header h1, .workouts-header h1, .goals-header h1 {
     font-size: 28px;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-    color: #ff9999;
+    color: var(--secondary-text);
 }
 
 /* Filter and View Toggle Styles */
@@ -102,26 +120,33 @@ nav .user img {
 }
 
 .filter select, .filter button, .view-toggle button {
-    padding: 5px 10px;
-    background: rgba(150, 0, 0, 0.3);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    color: #ff9999;
+    padding: 8px 15px; /* Increased padding */
+    background: var(--glass-bg);
+    backdrop-filter: blur(5px); /* Reduced blur slightly */
+    border: 1px solid var(--border-color);
+    color: var(--secondary-text);
     border-radius: 5px;
-    transition: background 0.3s ease;
+    transition: background 0.3s ease, color 0.3s ease;
     cursor: pointer;
+    font-size: 14px; /* Explicit font size */
+}
+
+.filter select:focus, .filter button:focus, .view-toggle button:focus {
+    outline: 1px solid var(--accent-color); /* Focus indicator */
 }
 
 .filter button:hover, .view-toggle button:hover {
-    background: rgba(150, 0, 0, 0.5);
+    background: var(--glass-bg-hover);
+    color: var(--primary-text); /* White text on hover */
 }
 
 .view-toggle button.active {
-    background: rgba(150, 0, 0, 0.5);
-    color: #ffffff;
+    background: var(--accent-color);
+    color: var(--primary-text);
+    border-color: var(--accent-color);
 }
 
-/* Filter Tabs Styles */
+/* Filter Tabs Styles (Workouts Page) */
 .filter-tabs {
     display: flex;
     gap: 10px;
@@ -130,51 +155,55 @@ nav .user img {
 
 .filter-tabs button {
     padding: 8px 16px;
-    background: rgba(150, 0, 0, 0.3);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    color: #ff9999;
+    background: var(--glass-bg);
+    backdrop-filter: blur(5px);
+    border: 1px solid var(--border-color);
+    color: var(--secondary-text); /* Changed from red */
     border-radius: 20px;
-    transition: background 0.3s ease;
+    transition: background 0.3s ease, color 0.3s ease;
     cursor: pointer;
 }
 
 .filter-tabs button:hover {
-    background: rgba(150, 0, 0, 0.5);
+    background: var(--glass-bg-hover);
+    color: var(--primary-text);
 }
 
 .filter-tabs button.active {
-    background: rgba(150, 0, 0, 0.5);
-    color: #ffffff;
+    background: var(--accent-color);
+    color: var(--primary-text);
+    border-color: var(--accent-color);
 }
 
 /* Stat Card Styles */
 .stats {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Responsive grid */
     gap: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 30px; /* Increased margin */
 }
 
 .stat-card {
-    background: rgba(150, 0, 0, 0.3);
+    background: var(--card-bg); /* Changed background */
     backdrop-filter: blur(10px);
     padding: 20px;
     border-radius: 10px;
     text-align: center;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-    transition: transform 0.3s ease;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 10px var(--shadow-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .stat-card:hover {
     transform: translateY(-5px);
+    box-shadow: 0 6px 15px var(--shadow-color); /* Enhanced shadow on hover */
 }
 
 .stat-card h3 {
-    margin: 0;
+    margin: 0 0 5px 0; /* Added bottom margin */
     font-size: 16px;
-    color: #ff6666;
+    color: var(--accent-color);
+    font-weight: normal; /* Lighter heading */
 }
 
 .stat-card .value {
@@ -182,83 +211,99 @@ nav .user img {
     font-weight: bold;
     margin: 10px 0;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-    color: #ff9999;
+    color: var(--secondary-text);
 }
 
 .stat-card .trend {
     font-size: 14px;
-    color: #00cc00;
+    color: var(--accent-color); /* Use accent color for trend */
 }
 
 /* Chart Styles */
 .charts {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid */
     gap: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 30px; /* Increased margin */
 }
 
 .chart-placeholder {
-    background: rgba(150, 0, 0, 0.3);
+    background: var(--card-bg); /* Changed background */
     backdrop-filter: blur(10px);
     padding: 50px;
     border-radius: 10px;
     text-align: center;
-    color: #ff6666;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    color: var(--secondary-text); /* Use secondary text color */
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 10px var(--shadow-color);
+    display: flex; /* Center content vertically */
+    align-items: center;
+    justify-content: center;
+    min-height: 250px; /* Ensure minimum height */
 }
 
-/* Goals Section Styles */
+/* Section Headers */
 .goals-section h2, .workouts-section h2, .community-section h2, .popular-communities h2, .trending-topics h2 {
-    font-size: 20px;
-    margin: 20px 0 10px;
+    font-size: 22px; /* Slightly larger */
+    margin: 30px 0 15px; /* Adjusted margins */
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-    color: #ff9999;
+    color: var(--secondary-text); /* Changed from red */
+    padding-bottom: 5px;
+    border-bottom: 1px solid var(--border-color); /* Add separator */
 }
 
+/* Goals List (Goals Page - List View) */
 .goals-list {
-    background: rgba(150, 0, 0, 0.3);
+    background: var(--card-bg); /* Changed background */
     backdrop-filter: blur(10px);
     padding: 20px;
     border-radius: 10px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 10px var(--shadow-color);
 }
 
+/* Goals Grid (Goals Page - Grid View) */
 .goals-list.grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive grid */
     gap: 20px;
-    background: transparent;
+    background: transparent; /* Remove background for grid container */
     padding: 0;
     border: none;
     box-shadow: none;
 }
 
-.goal {
+.goal { /* Style for individual goal in list view */
     margin-bottom: 20px;
+    padding-bottom: 15px; /* Spacing */
+    border-bottom: 1px solid var(--border-color); /* Separator */
+}
+.goal:last-child {
+    margin-bottom: 0;
+    border-bottom: none;
 }
 
 .goal h4 {
-    margin: 0;
+    margin: 0 0 5px 0; /* Spacing */
     font-size: 16px;
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
-    color: #ff9999;
+    color: var(--secondary-text);
 }
 
+/* Goal Card (Grid View) */
 .goal-card {
-    background: rgba(150, 0, 0, 0.3);
+    background: var(--card-bg); /* Changed background */
     backdrop-filter: blur(10px);
     padding: 20px;
     border-radius: 10px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-    transition: transform 0.3s ease;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 10px var(--shadow-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .goal-card:hover {
     transform: translateY(-5px);
+    box-shadow: 0 6px 15px var(--shadow-color);
 }
 
 .goal-card .goal-header {
@@ -271,8 +316,8 @@ nav .user img {
 .goal-card .goal-header h3 {
     margin: 0;
     font-size: 18px;
-    color: #ff9999;
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+    color: var(--secondary-text);
 }
 
 .goal-card .status {
@@ -280,154 +325,169 @@ nav .user img {
     padding: 5px 10px;
     border-radius: 5px;
     font-size: 12px;
-    color: #ff6666;
+    color: var(--accent-color);
+    font-weight: bold; /* Make status stand out */
 }
 
 .goal-card .goal-details {
     display: flex;
     justify-content: space-between;
     font-size: 14px;
-    color: #ff6666;
+    color: var(--secondary-text); /* Changed from red */
     margin-bottom: 10px;
+    opacity: 0.8; /* Slightly less prominent */
 }
 
-.goal-card .progress-bar {
+/* Progress Bar Styles (Used in Goals) */
+.goal-card .progress-bar, .goal .progress-bar {
     background: rgba(0, 0, 0, 0.5);
     height: 10px;
     border-radius: 5px;
-    margin: 5px 0;
+    margin: 10px 0; /* Adjusted margin */
     overflow: hidden;
+    border: 1px solid rgba(0,0,0,0.3); /* Subtle border */
 }
 
-.goal-card .progress-bar div {
-    background: linear-gradient(90deg, #ff3333, #ff6666);
+.goal-card .progress-bar div, .goal .progress-bar div {
+    background: var(--progress-gradient); /* Changed gradient */
     height: 100%;
     border-radius: 5px;
     transition: width 0.5s ease;
 }
 
-.goal .progress-bar {
-    background: rgba(0, 0, 0, 0.5);
-    height: 10px;
-    border-radius: 5px;
-    margin: 5px 0;
-    overflow: hidden;
-}
-
-.goal .progress-bar div {
-    background: linear-gradient(90deg, #ff3333, #ff6666);
-    height: 100%;
-    border-radius: 5px;
-    transition: width 0.5s ease;
-}
-
-.goal .details {
+.goal .details { /* Details below progress bar in list view */
     display: flex;
     justify-content: space-between;
     font-size: 14px;
-    color: #ff6666;
+    color: var(--secondary-text); /* Changed from red */
+    opacity: 0.8;
 }
 
 /* Workout Card Styles (Summary View - Index Page) */
 .workouts-section .workouts-list {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive grid */
     gap: 20px;
 }
 
 .workout-card {
-    background: rgba(150, 0, 0, 0.3);
+    background: var(--card-bg); /* Changed background */
     backdrop-filter: blur(10px);
     padding: 20px;
     border-radius: 10px;
     text-align: center;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-    transition: transform 0.3s ease;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 10px var(--shadow-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .workout-card:hover {
     transform: translateY(-5px);
+    box-shadow: 0 6px 15px var(--shadow-color);
 }
 
-.workout-card img {
+.workout-card img { /* Icon */
     width: 40px;
+    height: 40px; /* Ensure aspect ratio */
     margin-bottom: 10px;
-    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5)) /* Apply green tint? Maybe later */;
+    opacity: 0.8; /* Slightly less prominent icon */
 }
 
-.workout-card h4 {
+.workout-card h4 { /* Workout Type */
     margin: 0;
     font-size: 16px;
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
-    color: #ff9999;
+    color: var(--secondary-text);
+    margin-bottom: 5px; /* Spacing */
 }
 
 .workout-card .date {
     font-size: 14px;
-    color: #ff6666;
+    color: var(--secondary-text); /* Changed from red */
     margin: 5px 0;
+    opacity: 0.8;
 }
 
 .workout-card .duration {
     font-size: 14px;
-    color: #ff9999;
+    color: var(--secondary-text); /* Changed from red */
+    opacity: 0.8;
 }
 
 .workout-card .tags {
     display: flex;
     justify-content: center;
+    flex-wrap: wrap; /* Allow tags to wrap */
     gap: 5px;
     margin-top: 10px;
 }
 
 .workout-card .tags span {
     background: rgba(0, 0, 0, 0.5);
-    padding: 5px 10px;
+    padding: 3px 8px; /* Adjusted padding */
     border-radius: 5px;
     font-size: 12px;
-    color: #ff6666;
+    color: var(--accent-color); /* Changed from red */
+    border: 1px solid rgba(0,0,0,0.3);
 }
 
 /* Workout Card Styles (Detailed View - Workouts Page) */
 .workout-card.detailed {
     text-align: left;
+    background: var(--card-bg); /* Ensure consistent background */
+    backdrop-filter: blur(10px);
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 10px var(--shadow-color);
+    margin-bottom: 20px; /* Add space between detailed cards */
 }
 
 .workout-card.detailed .workout-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 10px;
+    margin-bottom: 15px; /* Increased spacing */
+    padding-bottom: 10px; /* Separator padding */
+    border-bottom: 1px solid var(--border-color); /* Separator */
 }
 
 .workout-card.detailed .workout-header h3 {
     margin: 0;
     font-size: 18px;
-    color: #ff9999;
+    color: var(--secondary-text); /* Changed from red */
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
 }
 
-.workout-card.detailed .play-btn {
-    background: rgba(150, 0, 0, 0.5);
+.workout-card.detailed .play-btn { /* Example button */
+    background: var(--accent-color); /* Changed background */
     border: none;
-    color: #ffffff;
-    padding: 5px 10px;
+    color: var(--primary-text);
+    padding: 8px 15px; /* Adjusted padding */
     border-radius: 5px;
     cursor: pointer;
     transition: background 0.3s ease;
+    font-size: 14px;
 }
 
 .workout-card.detailed .play-btn:hover {
-    background: rgba(150, 0, 0, 0.7);
+    background: var(--accent-color-darker); /* Changed hover */
 }
 
 .workout-card.detailed .workout-meta {
     display: flex;
+    flex-wrap: wrap; /* Allow wrapping */
     gap: 15px;
     margin-bottom: 15px;
     font-size: 14px;
-    color: #ff6666;
+    color: var(--secondary-text); /* Changed from red */
+    opacity: 0.8;
+}
+.workout-card.detailed .workout-meta span { /* Individual meta items */
+    display: inline-flex; /* Align icon and text if needed */
+    align-items: center;
+    gap: 5px;
 }
 
 .workout-card.detailed .workout-details {
@@ -438,37 +498,46 @@ nav .user img {
 
 .workout-card.detailed .exercise {
     background: rgba(0, 0, 0, 0.3);
-    padding: 10px;
+    padding: 10px 15px; /* Adjusted padding */
     border-radius: 5px;
     display: flex;
     justify-content: space-between;
+    align-items: center; /* Align items vertically */
     font-size: 14px;
-    color: #ff9999;
+    color: var(--secondary-text); /* Changed from red */
+    border: 1px solid rgba(0,0,0,0.2); /* Subtle border */
 }
+.workout-card.detailed .exercise span:last-child { /* e.g., Reps/Duration */
+    font-weight: bold;
+    color: var(--primary-text); /* Make value stand out */
+}
+
 
 /* Community Page Layout */
 .community-container {
     display: grid;
-    grid-template-columns: 200px 1fr 200px;
-    gap: 20px;
+    /* Adjust columns for responsiveness later if needed */
+    grid-template-columns: 220px 1fr 220px; /* Slightly wider sidebars */
+    gap: 25px; /* Increased gap */
 }
 
 .sidebar-left, .sidebar-right {
-    margin-top: 20px;
+    margin-top: 30px; /* Align with section title margin */
 }
 
 .main-content {
-    margin-top: 20px;
+    margin-top: 0; /* Remove top margin as h2 provides it */
 }
 
-/* Popular Communities and Trending Topics */
+/* Popular Communities and Trending Topics (Sidebars) */
 .popular-communities, .trending-topics {
-    background: rgba(150, 0, 0, 0.3);
+    background: var(--card-bg); /* Changed background */
     backdrop-filter: blur(10px);
     padding: 20px;
     border-radius: 10px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 10px var(--shadow-color);
+    margin-bottom: 20px; /* Space between sidebar sections */
 }
 
 .popular-communities ul, .trending-topics ul {
@@ -479,145 +548,329 @@ nav .user img {
 
 .popular-communities ul li, .trending-topics ul li {
     margin-bottom: 10px;
+    padding-bottom: 10px; /* Spacing */
+    border-bottom: 1px solid var(--border-color); /* Separator */
+}
+.popular-communities ul li:last-child, .trending-topics ul li:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
 }
 
 .popular-communities ul li a {
-    color: #ff9999;
+    color: var(--secondary-text); /* Changed from red */
     text-decoration: none;
     font-size: 16px;
     transition: color 0.3s ease;
+    display: block; /* Make link fill width */
 }
 
 .popular-communities ul li a:hover {
-    color: #ff3333;
+    color: var(--accent-color); /* Changed hover */
 }
 
 .trending-topics ul li {
     display: flex;
     flex-direction: column;
     font-size: 14px;
-    color: #ff9999;
+    color: var(--secondary-text); /* Changed from red */
+}
+.trending-topics ul li a { /* Make topic clickable */
+    color: var(--secondary-text);
+    text-decoration: none;
+    font-weight: bold;
+    margin-bottom: 3px;
+    transition: color 0.3s ease;
+}
+.trending-topics ul li a:hover {
+    color: var(--accent-color);
 }
 
-.trending-topics ul li span {
+.trending-topics ul li span { /* Post count */
     align-self: flex-end;
-    color: #ff6666;
+    font-size: 12px; /* Smaller count */
+    color: var(--accent-color);
+    opacity: 0.8;
 }
 
 /* Create Post Input */
 .create-post input {
     width: 100%;
-    padding: 10px;
-    background: rgba(150, 0, 0, 0.3);
+    padding: 15px; /* More padding */
+    background: var(--card-bg); /* Changed background */
     backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 5px;
-    color: #ff9999;
+    border: 1px solid var(--border-color);
+    border-radius: 8px; /* Slightly more rounded */
+    color: var(--primary-text); /* Changed text color */
     font-size: 16px;
-    margin-bottom: 20px;
+    margin-bottom: 25px; /* Increased margin */
+    box-sizing: border-box; /* Include padding in width */
 }
 
 .create-post input::placeholder {
-    color: #ff6666;
+    color: var(--secondary-text); /* Changed placeholder color */
+    opacity: 0.7;
+}
+.create-post input:focus {
+    outline: 1px solid var(--accent-color);
+    border-color: var(--accent-color); /* Highlight border on focus */
 }
 
 /* Community Posts */
 .posts {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 25px; /* Increased gap */
 }
 
 .post {
-    background: rgba(150, 0, 0, 0.3);
+    background: var(--card-bg); /* Changed background */
     backdrop-filter: blur(10px);
     padding: 20px;
     border-radius: 10px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 10px var(--shadow-color);
 }
 
 .post-header {
     display: flex;
     align-items: center;
-    gap: 10px;
-    margin-bottom: 10px;
+    gap: 15px; /* Increased gap */
+    margin-bottom: 15px; /* Increased margin */
 }
 
-.post-header img {
-    width: 40px;
+.post-header img { /* Avatar */
+    width: 45px; /* Slightly larger */
+    height: 45px;
     border-radius: 50%;
-    border: 2px solid rgba(255, 255, 255, 0.1);
+    border: 2px solid var(--border-color);
 }
 
-.post-meta h4 {
+.post-meta h4 { /* Username + Time */
     margin: 0;
     font-size: 14px;
-    color: #ff6666;
+    color: var(--secondary-text); /* Changed from red */
+    font-weight: bold;
 }
 
-.post-meta h4 span {
-    color: #ff9999;
+.post-meta h4 span { /* Time */
+    color: var(--secondary-text); /* Changed from red */
+    font-weight: normal;
+    opacity: 0.7;
+    margin-left: 8px; /* Space between name and time */
 }
 
-.post-meta h3 {
+.post-meta h3 { /* Post Title */
     margin: 5px 0 0;
     font-size: 18px;
-    color: #ff9999;
+    color: var(--primary-text); /* Use primary text for title */
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
 }
 
-.post p {
-    font-size: 14px;
-    color: #ff6666;
-    margin: 10px 0;
+.post p { /* Post Body */
+    font-size: 15px; /* Slightly larger */
+    color: var(--primary-text); /* Changed from red */
+    margin: 15px 0; /* Adjusted margin */
+    line-height: 1.7; /* Improve readability */
+    opacity: 0.9;
 }
 
 .post-actions {
     display: flex;
-    gap: 15px;
+    gap: 20px; /* Increased gap */
     font-size: 14px;
-    color: #ff6666;
+    color: var(--secondary-text); /* Changed from red */
+    margin-top: 15px; /* Add space above actions */
+    padding-top: 15px; /* Add space */
+    border-top: 1px solid var(--border-color); /* Separator */
 }
 
 .post-actions span {
     cursor: pointer;
+    display: inline-flex; /* Align icon and text */
+    align-items: center;
+    gap: 5px;
+    transition: color 0.3s ease;
 }
+/* Add icons later if desired */
+/* .post-actions span i { margin-right: 5px; } */
 
 .post-actions span:hover {
-    color: #ff9999;
+    color: var(--accent-color); /* Changed hover */
 }
 
 /* View All and New Goal Button Styles */
 .view-all {
     text-align: right;
-    margin-top: 10px;
+    margin-top: 15px; /* Increased margin */
 }
 
 .view-all a {
-    color: #ff9999;
+    color: var(--secondary-text); /* Changed from red */
     text-decoration: none;
     font-weight: bold;
     transition: color 0.3s ease;
+    font-size: 14px; /* Match other small text */
 }
 
 .view-all a:hover {
-    color: #ff3333;
+    color: var(--accent-color); /* Changed hover */
 }
 
-.new-goal-btn {
-    background: rgba(150, 0, 0, 0.3);
+.new-goal-btn { /* Also used for other primary actions potentially */
+    background: var(--accent-color); /* Use accent color */
     backdrop-filter: blur(10px);
     padding: 10px 20px;
     border-radius: 5px;
     text-decoration: none;
-    color: #ff9999;
+    color: var(--primary-text); /* White text */
     display: inline-block;
-    margin-top: 10px;
-    border: 1px solid rgba(255, 250, 255, 0.1);
-    transition: background 0.3s ease;
+    margin-top: 15px; /* Adjusted margin */
+    border: 1px solid var(--accent-color); /* Border matches background */
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+    font-weight: bold;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
 }
 
 .new-goal-btn:hover {
-    background: rgba(150, 0, 0, 0.5);
+    background: var(--accent-color-darker); /* Darker green on hover */
+    border-color: var(--accent-color-darker);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+}
+
+/* Achievements Section (Example) */
+.achievements {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 30px; /* Space above achievements */
+}
+
+.achievement {
+    background: var(--card-bg); /* Use card background */
+    backdrop-filter: blur(10px);
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 10px var(--shadow-color);
+    display: flex; /* Use flex for layout */
+    gap: 15px;
+    align-items: center; /* Align items vertically */
+}
+
+.achievement img { /* Badge/Icon */
+    width: 50px; /* Larger icon */
+    height: 50px;
+    border-radius: 50%;
+    border: 2px solid var(--border-color);
+    object-fit: cover;
+    flex-shrink: 0; /* Prevent icon shrinking */
+}
+
+.achievement .content {
+    flex-grow: 1; /* Allow content to take remaining space */
+}
+
+.achievement .content h4 { /* Achievement Title */
+    margin: 0 0 3px 0; /* Adjusted margin */
+    font-size: 16px;
+    color: var(--secondary-text);
+}
+
+.achievement .content span { /* Date Achieved */
+    font-size: 12px;
+    color: var(--secondary-text); /* Changed from red */
+    opacity: 0.7;
+    display: block; /* Put date on new line */
+    margin-bottom: 8px; /* Space below date */
+}
+
+.achievement .content p { /* Description */
+    font-size: 14px;
+    color: var(--primary-text); /* Changed from red */
+    margin: 0; /* Remove default margin */
+    line-height: 1.6;
+    opacity: 0.9;
+}
+
+/* Removed .details and .stats from achievement as they seemed redundant/unclear */
+
+/* Basic Responsive Adjustments */
+@media (max-width: 992px) {
+    .stats {
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    }
+    .charts {
+        grid-template-columns: 1fr; /* Stack charts */
+    }
+    .community-container {
+        grid-template-columns: 1fr; /* Stack community layout */
+    }
+    .sidebar-left, .sidebar-right {
+        display: grid; /* Arrange sidebar items horizontally if needed */
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    nav .container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    nav ul {
+        margin-top: 10px;
+        gap: 15px;
+        flex-wrap: wrap; /* Allow nav items to wrap */
+    }
+    nav .user {
+        margin-top: 10px;
+        align-self: flex-end;
+    }
+    .dashboard-header, .workouts-header, .goals-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    .stats {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    }
+    .goals-list.grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+    .workouts-section .workouts-list {
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+    .sidebar-left, .sidebar-right {
+        grid-template-columns: 1fr; /* Stack sidebar items again */
+    }
+    .post-header {
+        align-items: flex-start; /* Align avatar top */
+    }
+}
+
+@media (max-width: 576px) {
+    .container {
+        width: 95%;
+    }
+    nav ul li a {
+        font-size: 14px;
+    }
+    .stats {
+        grid-template-columns: 1fr 1fr; /* Two columns */
+    }
+    .stat-card .value {
+        font-size: 28px;
+    }
+    .filter, .view-toggle {
+        flex-wrap: wrap; /* Allow buttons to wrap */
+    }
+    .post p {
+        font-size: 14px;
+    }
+    .achievement {
+        flex-direction: column; /* Stack achievement icon and content */
+        align-items: flex-start;
+    }
 }

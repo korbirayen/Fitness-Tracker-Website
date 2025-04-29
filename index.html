@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FitTrack - Home</title>
     <link rel="stylesheet" href="styles.css">
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 </head>
 <body>
     <nav>
@@ -63,11 +64,11 @@
         </div>
 
         <div class="charts">
-            <div class="chart-placeholder">
-                Weight lifting progress chart
+            <div class="chart-placeholder" id="weightLiftingChart"> <!-- Add ID -->
+                <!-- Google Chart will be drawn here -->
             </div>
-            <div class="chart-placeholder">
-                Weekly workout frequency chart
+            <div class="chart-placeholder" id="workoutFrequencyChart"> <!-- Add ID -->
+                <!-- Google Chart will be drawn here -->
             </div>
         </div>
 
@@ -206,5 +207,73 @@
     </div>
 
     <script src="script.js"></script>
+    <script type="text/javascript">
+        // Load the corechart package
+        google.charts.load('current', {'packages':['corechart']});
+    
+        // Set callbacks to run when the Google Visualization API is loaded.
+        google.charts.setOnLoadCallback(drawWeightChart);
+        google.charts.setOnLoadCallback(drawFrequencyChart);
+    
+        // Callback function for the Weight Lifting Chart
+        function drawWeightChart() {
+          var data = google.visualization.arrayToDataTable([
+            ['Month', 'Progress (KG)'],
+            ['Jan',  70], ['Feb',  75], ['Mar',  80], ['Apr',  80],
+            ['May',  85], ['Jun',  80], ['Jul',  80], ['Aug',  85],
+            ['Sep',  90], ['Oct',  110], ['Nov', 130], ['Dec', 150]
+          ]);
+    
+          var options = {
+            title: 'Monthly Weightlifting Progress (KG)',
+            titleTextStyle: { color: '#90ee90' },
+            curveType: 'function',
+            legend: { position: 'bottom', textStyle: { color: '#ffffff'} },
+            backgroundColor: 'transparent',
+            hAxis: { textStyle:{color: '#ffffff'}, titleTextStyle: {color: '#ffffff'} },
+            vAxis: { textStyle:{color: '#ffffff'}, titleTextStyle: {color: '#ffffff'}, gridlines: { color: 'rgba(60, 179, 113, 0.3)' }, baselineColor: 'rgba(60, 179, 113, 0.3)' },
+            colors: ['#3cb371'],
+            chartArea: { left: 50, top: 40, width: '85%', height: '70%' }
+          };
+    
+          var chart = new google.visualization.LineChart(document.getElementById('weightLiftingChart'));
+          chart.draw(data, options);
+    
+          window.addEventListener('resize', function() { chart.draw(data, options); });
+        }
+    
+        // Callback function for the Workout Frequency Chart
+        function drawFrequencyChart() {
+          var data = google.visualization.arrayToDataTable([
+            ['Day', 'Workouts'],
+            ['Mon',  1], ['Tue',  2], ['Wed',  0], ['Thu',  1],
+            ['Fri',  1], ['Sat',  0], ['Sun',  1]
+          ]);
+    
+          var options = {
+            title: 'Weekly Workout Frequency',
+            titleTextStyle: { color: '#90ee90' },
+            legend: { position: 'none' },
+            backgroundColor: 'transparent',
+            hAxis: { textStyle:{color: '#ffffff'}, titleTextStyle: {color: '#ffffff'} },
+            vAxis: {
+              title: 'Workouts per Day',
+              titleTextStyle: {color: '#ffffff', italic: false},
+              textStyle:{color: '#ffffff'},
+              gridlines: { color: 'rgba(60, 179, 113, 0.3)' },
+              baselineColor: 'rgba(60, 179, 113, 0.3)',
+              minValue: 0
+            },
+            colors: ['#66bb6a'],
+            bars: 'vertical',
+            chartArea: { left: 50, top: 40, width: '85%', height: '70%' }
+          };
+    
+          var chart = new google.visualization.ColumnChart(document.getElementById('workoutFrequencyChart'));
+          chart.draw(data, options);
+    
+          window.addEventListener('resize', function() { chart.draw(data, options); });
+        }
+      </script>
 </body>
 </html>
