@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitTrack - Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <a href="index.html" id="logo">
+                <div class="logo">
+                    <img src="https://placehold.co/24" alt="Dumbbell Icon">
+                    <span>FitTrack</span>
+                </div>
+            </a>
+            <ul>
+                <li><a href="index.html">Dashboard</a></li>
+                <li><a href="workouts.html">Workouts</a></li>
+                <li><a href="goals.html">Goals</a></li>
+                <li><a href="community.html">Community</a></li>
+            </ul>
+            <div class="user">
+                <img src="https://placehold.co/24" alt="Notification Icon">
+                <img src="https://placehold.co/24" alt="User Icon">
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="dashboard-header">
+            <h1>My Fitness Dash</h1>
+            <div class="filter">
+                <select>
+                    <option>April 2025</option>
+                </select>
+                <button>Filter</button>
+            </div>
+        </div>
+
+        <div class="stats">
+            <div class="stat-card">
+                <h3>Total Workouts</h3>
+                <div class="value">28</div>
+                <div class="trend">↑ 12% from last month</div>
+            </div>
+            <div class="stat-card">
+                <h3>Active Goals</h3>
+                <div class="value">3</div>
+                <div class="trend">2 goals near completion</div>
+            </div>
+            <div class="stat-card">
+                <h3>Total Weight Lifted</h3>
+                <div class="value">1,250 kg</div>
+                <div class="trend">↑ 8% from last month</div>
+            </div>
+            <div class="stat-card">
+                <h3>Community Rank</h3>
+                <div class="value">#42</div>
+                <div class="trend">↑ 5 positions this week</div>
+            </div>
+        </div>
+
+        <div class="goals-section">
+            <h2>Active Goals</h2>
+            <div class="goals-list">
+                <div class="goal">
+                    <h4>Run 5km in 30 days</h4>
+                    <div class="details">
+                        <span>Ends on May 29, 2025</span>
+                        <span>18 days left</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div style="width: 65%;"></div>
+                    </div>
+                    <div class="details">
+                        <span>Progress</span>
+                        <span>65% (3.25km / 5km)</span>
+                    </div>
+                </div>
+                <div class="goal">
+                    <h4>Bench Press 100kg</h4>
+                    <div class="details">
+                        <span>Ends on June 15, 2025</span>
+                        <span>35 days left</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div style="width: 80%;"></div>
+                    </div>
+                    <div class="details">
+                        <span>Progress</span>
+                        <span>80% (80kg / 100kg)</span>
+                    </div>
+                </div>
+                <div class="goal">
+                    <h4>Complete 20 Yoga Sessions</h4>
+                    <div class="details">
+                        <span>Ends on May 31, 2025</span>
+                        <span>20 days left</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div style="width: 40%;"></div>
+                    </div>
+                    <div class="details">
+                        <span>Progress</span>
+                        <span>40% (8 / 20 sessions)</span>
+                    </div>
+                </div>
+            </div>
+            <a href="goals.html" class="new-goal-btn">+ New Goal</a>
+        </div>
+
+        <div class="charts">
+            <div class="chart-placeholder">
+                Weight lifting progress chart
+            </div>
+            <div class="chart-placeholder">
+                Weekly workout frequency chart
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

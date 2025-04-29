@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitTrack - Workouts</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <a href="index.html" id="logo">
+                <div class="logo">
+                    <img src="https://placehold.co/24" alt="Dumbbell Icon">
+                    <span>FitTrack</span>
+                </div>
+            </a>
+            
+            <ul>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="workouts.html">Workouts</a></li>
+                <li><a href="goals.html">Goals</a></li>
+                <li><a href="community.html">Community</a></li>
+            </ul>
+            <div class="user">
+                <img src="https://placehold.co/24" alt="Notification Icon">
+                <img src="https://placehold.co/24" alt="User Icon">
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="workouts-header">
+            <h1>My Workouts</h1>
+            <div class="view-toggle">
+                <button class="active">List View</button>
+                <button>Calendar</button>
+            </div>
+        </div>
+
+        <div class="filter-tabs">
+            <button class="active">All Workouts</button>
+            <button>Strength Training</button>
+            <button>Cardio</button>
+            <button>HIIT</button>
+            <button>Yoga</button>
+        </div>
+
+        <div class="workouts-list">
+            <div class="workout-card detailed">
+                <div class="workout-header">
+                    <h3>Upper Body Strength</h3>
+                    <button class="play-btn">▶</button>
+                </div>
+                <div class="workout-meta">
+                    <span>⏱ 45 mins</span>
+                    <span>🔥 320 cal</span>
+                    <span>💪 Strength</span>
+                </div>
+                <div class="workout-details">
+                    <div class="exercise">
+                        <span>Bench Press</span>
+                        <span>4 sets x 12 reps</span>
+                    </div>
+                    <div class="exercise">
+                        <span>Shoulder Press</span>
+                        <span>3 sets x 15 reps</span>
+                    </div>
+                    <div class="exercise">
+                        <span>Tricep Extensions</span>
+                        <span>3 sets x 12 reps</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="workout-card detailed">
+                <div class="workout-header">
+                    <h3>HIIT Cardio</h3>
+                    <button class="play-btn">▶</button>
+                </div>
+                <div class="workout-meta">
+                    <span>⏱ 30 mins</span>
+                    <span>🔥 450 cal</span>
+                    <span>🏃 Cardio</span>
+                </div>
+                <div class="workout-details">
+                    <div class="exercise">
+                        <span>Burpees</span>
+                        <span>45 seconds x 3 rounds</span>
+                    </div>
+                    <div class="exercise">
+                        <span>Mountain Climbers</span>
+                        <span>30 seconds x 3 rounds</span>
+                    </div>
+                    <div class="exercise">
+                        <span>Jump Rope</span>
+                        <span>60 seconds x 3 rounds</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

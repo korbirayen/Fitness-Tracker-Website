@@ -1,0 +1,5 @@
+-workout logging
+-progress tracking (set fitness goals : run 5km in 30 days)
+-community sharing (maybe) (share achievements)
+-Progress dashboard with charts (weight lifted over time)
+-User authentication (login/signup)
